@@ -5,7 +5,7 @@ const getApi=()=>(dispatch)=>
 {
     let token=localStorage.getItem("token")
     dispatch({type:GETR})
-    axios.get('https://gagannotesapp.herokuapp.com/notes',
+    axios.get('https://spoidy-notes.onrender.com/notes',
     {headers: {
         Authorization: "Bearer " +token
       }})
@@ -17,7 +17,7 @@ const addApi=(data)=>(dispatch)=>
 {
    let token=localStorage.getItem("token")
     dispatch({type:POSTR})
-    return axios.post("https://gagannotesapp.herokuapp.com/notes/create",data,{
+    return axios.post("https://spoidy-notes.onrender.com/notes/create",data,{
         headers:{
             Authorization:"Bearer "+token
         }
@@ -30,7 +30,7 @@ const editApi=(id,data)=>(dispatch)=>
 {
     let token=localStorage.getItem("token");
     dispatch({type:PATCHR})
-    return axios.patch(`https://gagannotesapp.herokuapp.com/notes/${id}/edit`,data,{
+    return axios.patch(`https://spoidy-notes.onrender.com/notes/${id}/edit`,data,{
         "headers":{
             Authorization:"Bearer "+token
         }
@@ -42,7 +42,7 @@ const deleteApi=(id)=>(dispatch)=>
 {
     let token=localStorage.getItem("token");
     dispatch({type:DELETER});
-    return axios.delete(`https://gagannotesapp.herokuapp.com/notes/${id}/delete`,
+    return axios.delete(`https://spoidy-notes.onrender.com/notes/${id}/delete`,
     {
         "headers":{
             Authorization:"Bearer "+token

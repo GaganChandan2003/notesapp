@@ -12,16 +12,16 @@ import {
   useColorModeValue,
   Stack,
   Text,
-  Image,
-  Icon,
+  Divider,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Link } from "react-router-dom"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutApi } from '../Store/Auth/action';
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {username}=useSelector((state)=>state.reducer);
   const dispatch=useDispatch();
   const handleLogout=()=>
   {
@@ -61,6 +61,8 @@ export default function Navbar() {
                <Text fontWeight="700" >S</Text>
               </MenuButton>
               <MenuList>
+              <MenuItem >{username}</MenuItem>
+              <Divider/>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </MenuList>
             </Menu>

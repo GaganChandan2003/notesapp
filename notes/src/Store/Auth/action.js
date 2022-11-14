@@ -3,7 +3,8 @@ import axios from "axios";
 
 
 const registerApi = (data) => (dispatch) => {
-    return axios.post('https://gagannotesapp.herokuapp.com/user/register', {
+    dispatch({ type: REGR });
+    return axios.post('https://spoidy-notes.onrender.com/user/register', {
         "username":data.username,
         "email": data.email,
         "password": data.password
@@ -14,11 +15,11 @@ const registerApi = (data) => (dispatch) => {
 
 const loginApi = (data) => (dispatch) => {
     dispatch({ type: LOGINR });
-    return axios.post("https://gagannotesapp.herokuapp.com/user/login", {
+return axios.post("https://spoidy-notes.onrender.com/user/login", {
         "email": data.email,
         "password": data.password
     })
-        .then((res) => dispatch({ type: LOGINS, payload: res.data.token }))
+        .then((res) =>dispatch({ type: LOGINS, payload: res.data.token, username:res.data.username }))
         .catch((err) => dispatch({ type: LOGINF }));
 }
 

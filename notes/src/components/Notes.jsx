@@ -1,7 +1,7 @@
 import { Box, Button, Input, Textarea, Flex, useToast, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { getApi, addApi } from '../Store/Data/action';
 import Navbar from './Navbar';
 import css from './Notes.module.css'
@@ -13,6 +13,8 @@ const Notes = () => {
     const [note, setnote] = useState("");
     const [label, setlabel] = useState("");
     const dispatch = useDispatch();
+    // const username=useSelector((state)=>state.reducer.username);
+    // console.log(username);
     const handleSubmit = (e) => {
         e.preventDefault();
         let notes = {

@@ -92,7 +92,7 @@ const FullNote = () => {
                                 padding="0"
                                 height="auto"
                                 overflowY="hidden"
-                                fontSize={{ base: '15px', sm: '15px', md: "15px", lg: "15px" }}
+                                fontSize={{base:"13px",sm:"15px",md:"15px",lg:"18px"}}
                                 border="none"
                                 outline="none"
                                 variant="ghoust"

@@ -1,14 +1,16 @@
 import { LOGINR, LOGINS, LOGINF, REGF, REGR, REGS, LOGOUT } from "./action.types";
 let token = localStorage.getItem("token");
+let username=localStorage.getItem("username");
 const intialState = {
     "isLoading": false,
     "isError": false,
     "token": token,
-    "isAuth": !!token
+    "isAuth": !!token,
+    "username": username
 
 }
 
-export const reducer = (state = intialState, { type, payload }) => {
+export const reducer = (state = intialState, { type, payload, username }) => {
     switch (type) {
         case REGR:
             {
@@ -28,22 +30,25 @@ export const reducer = (state = intialState, { type, payload }) => {
             }
         case LOGINS:
             {
+
                 if (payload) {
                     localStorage.setItem("token", payload);
+                    localStorage.setItem("username", username);
                 }
                 return {
-                    ...state, token: payload, isLoading: false, isError: false, isAuth: true,
+                    ...state, token: payload, isLoading: false, isError: false, isAuth: true, username: username
                 };
             }
         case LOGINF:
             {
                 return { ...state, isLoading: false, isError: true };
             }
-            case LOGOUT:
-                {
-                    localStorage.setItem("token", "");
-                    return {...state,token:"",isAuth:false}
-                }
+        case LOGOUT:
+            {
+                localStorage.setItem("token", "");
+                
+                return { ...state, token: "", isAuth: false }
+            }
         default:
             {
                 return state;

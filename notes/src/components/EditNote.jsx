@@ -80,6 +80,7 @@ const EditNote = () => {
               _placeholder={{ color: 'white' }}
               borderRadius="none" />
             <Textarea
+            fontSize={{base:"13px",sm:"15px",md:"15px",lg:"18px"}}
               color="white"
               onChange={(e) => { setnote(e.target.value) }}
               h="40vh"
