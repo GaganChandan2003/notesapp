@@ -25,5 +25,5 @@ app.listen(process.env.PORT,async()=>
     catch{
         console.log("Disconnected");
     }
-    console.log("Server Started on port http://localhost:8080");
+    console.log("Server Started on port http://localhost:5000");
 })
