@@ -30,9 +30,10 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} position="sticky" top="0" zIndex="10">
+      <Box bg={useColorModeValue('blue.900', 'blue.900')} px={4} position="sticky" top="0" zIndex="10" color="white">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
+          color="black"
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={'Open Menu'}
@@ -52,6 +53,7 @@ export default function Navbar() {
           <Flex alignItems={'center'}>
             <Menu>
               <MenuButton
+              color="black"
                 as={Button}
                 rounded={'full'}
                 variant={'link'}
@@ -60,7 +62,7 @@ export default function Navbar() {
                 minW={0}>
                <Text fontWeight="700" >S</Text>
               </MenuButton>
-              <MenuList>
+              <MenuList color="black">
               <MenuItem >{username}</MenuItem>
               <Divider/>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteApi, getApi } from '../Store/Data/action';
 import Navbar from './Navbar';
+import css from './FullNote.module.css'
 
 const FullNote = () => {
 
@@ -49,7 +50,7 @@ const FullNote = () => {
     return (
         <>
             <Navbar />
-            <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" background="#2980b9">
+            <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}>
                 {
                     newdata.map((el) => {
                         return <Box key={el._id}

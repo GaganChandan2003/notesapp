@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getApi } from '../Store/Data/action'
 import Navbar from './Navbar';
 import { Link } from "react-router-dom"
+import css from './AllNotes.module.css'
 
 
 const AllNotes = () => {
@@ -18,7 +19,7 @@ const AllNotes = () => {
         < >
             <Navbar />
 
-               { isLoading?<Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" background="#2980b9" display="flex" justifyContent="center" alignItems="center">
+               { isLoading?<Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box} display="flex" justifyContent="center" alignItems="center">
                     <Spinner
                         thickness='4px'
                         speed='0.65s'
@@ -27,7 +28,7 @@ const AllNotes = () => {
                         size='xl'
                     />
                 </Box>:
-                <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" background="#2980b9">
+                <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto"  className={css.box}>
                         <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 3 }} w="100%" justifyContent="center" gap="20px" alignItems="center" >
                             {
                                 data.map((el) => {
