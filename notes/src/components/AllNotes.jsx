@@ -32,7 +32,7 @@ const AllNotes = () => {
                     <SimpleGrid columns={{ base: 1, sm: 1, md: 3, lg: 4 }} w="100%" justifyContent="center" gap="20px" alignItems="center" >
                         {
                             data.map((el) => {
-                                return <Flex key={el.id}
+                                return <Flex key={el._id}
                                     boxShadow="8px 8px 0px 2px rgba(0,0,0,0.67)"
                                     border="2px solid black"
                                     h="50vh"
