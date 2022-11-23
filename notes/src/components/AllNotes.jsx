@@ -43,7 +43,7 @@ const AllNotes = () => {
                                     alignItems="left"
                                 >
                                     <Flex
-                                        backgroundColor="blue.100"
+                                        backgroundColor="blue.200"
                                         height="15%"
                                         padding="20px"
                                         alignItems="center"
@@ -60,7 +60,7 @@ const AllNotes = () => {
                                     <Box
                                         borderTop="1px solid black"
                                         padding="20px"
-                                        bgColor="blue.100"
+                                        bgColor="blue.200"
                                         height="85%"
                                         textAlign="center"
                                     >
