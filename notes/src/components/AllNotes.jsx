@@ -9,7 +9,6 @@ import css from './AllNotes.module.css'
 
 const AllNotes = () => {
     const dispatch = useDispatch();
-
     let data = useSelector((state) => state.notesReducer.notes);
     let { isLoading } = useSelector((state) => state.notesReducer);
     useEffect(() => {
@@ -28,7 +27,7 @@ const AllNotes = () => {
                     size='xl'
                 />
             </Box> :
-                <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}>
+            <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}>
                     <SimpleGrid columns={{ base: 1, sm: 1, md: 3, lg: 4 }} w="100%" justifyContent="center" gap="20px" alignItems="center" >
                         {
                             data.map((el) => {

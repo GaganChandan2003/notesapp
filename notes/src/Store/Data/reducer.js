@@ -1,7 +1,8 @@
-import { GETR, GETF, GETS, POSTR, POSTF, PATCHR, PATCHF, DELETER, DELETEF, DELETES, POSTS, PATCHS } from "./action.types";
+import { GETR, GETF, GETS, GETONER, GETONES, GETONEF, POSTR, POSTF, PATCHR, PATCHF, DELETER, DELETEF, DELETES, POSTS, PATCHS } from "./action.types";
 
 const intialState = {
     "notes": [],
+    "single_note": {},
     "isLoading": false,
     "isError": false
 
@@ -19,6 +20,18 @@ export const notesReducer = (state = intialState, { type, payload }) => {
                 return { ...state, notes: payload, isLoading: false, isError: false }
             }
         case GETF:
+            {
+                return { ...state, isLoading: false, isError: true }
+            }
+        case GETONER:
+            {
+                return { ...state, isLoading: true, isError: false }
+            }
+        case GETONES:
+            {
+                return { ...state, isLoading: false, isError: false, single_note: payload }
+            }
+        case GETONEF:
             {
                 return { ...state, isLoading: false, isError: true }
             }
