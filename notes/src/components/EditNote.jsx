@@ -9,20 +9,14 @@ import css from "./Notes.module.css"
 
 const EditNote = () => {
   let { id } = useParams();
-  
-  let data = useSelector((state) => state.notesReducer.notes).filter((el)=>{
-    if(el._id===id)
-    {
-      return el;
-    }
-  });
+  let notes = useSelector((state) => state.notesReducer.oneNote);
 
  
   const nav=useNavigate();
 
-  const [title, settitle] = useState(data[0].title);
-  const [note, setnote] = useState(data[0].note);
-  const [label, setlabel] = useState(data[0].label);
+  const [title, settitle] = useState(notes.title);
+  const [note, setnote] = useState(notes.note);
+  const [label, setlabel] = useState(notes.label);
   const toast = useToast();
   
   const dispatch = useDispatch();
