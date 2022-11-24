@@ -31,7 +31,7 @@ const getOne = (noteId) => (dispatch) => {
     axios.get(`https://spoidy-notes.onrender.com/notes/${noteId}`,
         {
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer "+token
             }
         }).then((res)=>dispatch({type:GETONES,payload:res.data}))
         .catch((err)=>dispatch({type:GETONEF}))

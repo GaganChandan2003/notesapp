@@ -10,6 +10,7 @@ import css from './AllNotes.module.css'
 const AllNotes = () => {
     const dispatch = useDispatch();
     let data = useSelector((state) => state.notesReducer.notes);
+    console.log(data);
     let { isLoading } = useSelector((state) => state.notesReducer);
     useEffect(() => {
         dispatch(getApi())

@@ -20,7 +20,7 @@ const Notes = () => {
         let notes = {
             title: title,
             note: note,
-            label: label
+            label: label.toUpperCase()
         }
         dispatch(addApi(notes))
             .then(() => (

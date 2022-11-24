@@ -2,7 +2,7 @@ import { GETR, GETF, GETS, GETONER, GETONES, GETONEF, POSTR, POSTF, PATCHR, PATC
 
 const intialState = {
     "notes": [],
-    "single_note": {},
+    "oneNote":[],
     "isLoading": false,
     "isError": false
 
@@ -29,7 +29,7 @@ export const notesReducer = (state = intialState, { type, payload }) => {
             }
         case GETONES:
             {
-                return { ...state, isLoading: false, isError: false, single_note: payload }
+                return { ...state, isLoading: false, isError: false, oneNote: payload}
             }
         case GETONEF:
             {

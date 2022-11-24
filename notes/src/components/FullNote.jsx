@@ -3,7 +3,6 @@ import { Box, Flex, Spinner, Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
-// import { deleteApi, getApi } from '../Store/Data/action';
 import Navbar from './Navbar';
 import css from './FullNote.module.css'
 import { deleteApi, getApi, getOne } from '../Store/Data/action';
@@ -12,18 +11,15 @@ import { deleteApi, getApi, getOne } from '../Store/Data/action';
 const FullNote = () => {
     let nav = useNavigate();
     let { id } = useParams();
-
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getOne(id))
-    }, [id, dispatch])
+
 
     let { isLoading } = useSelector((state) => state.notesReducer);
-    let note = useSelector((state) => state.notesReducer.single_note);
-    let date = note.updatedAt.split("T")[0].split("-").reverse().join("-")
-
-
+    let note = useSelector((state) => state.notesReducer.oneNote);
+    useEffect(() => {
+        dispatch(getOne(id))
+    }, [id,dispatch])
 
 
     const handlePlay = () => {
@@ -41,6 +37,7 @@ const FullNote = () => {
     }
 
     const handleDelete = () => {
+
         dispatch(deleteApi(id)).then(() => dispatch(getApi())).catch((err) => console.log(err))
         nav("/allnotes")
     }
@@ -51,15 +48,15 @@ const FullNote = () => {
     return (
         <>
             <Navbar />
-            {isLoading ? <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box} display="flex" justifyContent="center" alignItems="center">
-                <Spinner
+             {isLoading ? <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box} display="flex" justifyContent="center" alignItems="center">
+                 <Spinner
                     thickness='4px'
                     speed='0.65s'
                     emptyColor='gray.200'
                     color='blue.500'
                     size='xl'
                 />
-            </Box> :
+             </Box> :
                 <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}  >
                     <Flex height="2.5rem" width="100px" margin="auto" bgColor="blue.200" borderRadius=" 8px 8px 0 0 " alignItems="center" justifyContent="space-around" border="2px solid black" borderBottom="none" >
                         <i class="fa-solid fa-circle-play" style={{ fontSize: "20px" }} onClick={handlePlay}></i>
@@ -80,8 +77,8 @@ const FullNote = () => {
                             justifyContent="space-between"
                             alignItems="center"
                         >
-                            <Box border="2px solid black" borderRadius="8px 8px 0 0" fontSize="13px" padding=" 4px 10px" fontWeight="650" bgColor="blue.200" >{note.label.toUpperCase()}</Box>
-                            <Box border="2px solid black" borderRadius="8px 8px 0 0" fontSize="13px" padding=" 4px 10px" fontWeight="650" bgColor="blue.200" >{date}</Box>
+                            <Box border="2px solid black" borderRadius="8px 8px 0 0" fontSize="13px" padding=" 4px 10px" fontWeight="650" bgColor="blue.200" >{note.label}</Box>
+                            <Box border="2px solid black" borderRadius="8px 8px 0 0" fontSize="13px" padding=" 4px 10px" fontWeight="650" bgColor="blue.200" >{note.date}</Box>
                         </Flex>
                         <Flex
                             borderTop="1px solid black" padding="20px" direction="column">
