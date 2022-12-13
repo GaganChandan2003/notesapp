@@ -24,22 +24,38 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isAuth } = useSelector((state) => state.reducer);
-    const toast=useToast()
+    const toast = useToast()
+    if (isAuth === true) {
+        toast({
+            title: 'Logged in Sucessfully',
+            status: 'success',
+            duration: 5000,
+            position: "top",
+            isClosable: true,
+        })
+        navigate('/notes')
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
             email,
             password
         }
-        dispatch(loginApi(data)).then(() => (
-            toast({
-                title: 'Logged in Sucessfully',
-                status: 'success',
-                duration: 5000,
-                position:"top",
-                isClosable: true,
-              }),
-            navigate('/notes')))
+        
+        dispatch(loginApi(data)).then(()=>
+        {
+            var token=localStorage.getItem("token")
+            if (!token) {
+                toast({
+                    title: 'Invalid credentials',
+                    status: 'error',
+                    duration: 5000,
+                    position: "top",
+                    isClosable: true,
+                })
+            }
+        })
     }
     return (
 

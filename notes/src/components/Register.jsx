@@ -36,7 +36,7 @@ const Register = () => {
 
         dispatch(registerApi(details)).then(() =>(  
             toast({
-                title: 'Registered Sucess',
+                title: 'Registered Success or User alreay exist',
                 status: 'success',
                 duration: 5000,
                 position:"top",

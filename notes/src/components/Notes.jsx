@@ -2,11 +2,13 @@ import { Box, Button, Input, Textarea, Flex, useToast, Text } from '@chakra-ui/r
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getApi, addApi } from '../Store/Data/action';
 import Navbar from './Navbar';
 import css from './Notes.module.css'
 
 const Notes = () => {
+    let nav=useNavigate();
     const token = localStorage.getItem("token");
     const toast = useToast();
     const [title, settitle] = useState("");
@@ -41,6 +43,8 @@ const Notes = () => {
     useEffect(() => {
         dispatch(getApi(token))
     }, [dispatch, token])
+
+
 
     return (
         <>

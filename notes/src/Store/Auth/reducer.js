@@ -30,7 +30,6 @@ export const reducer = (state = intialState, { type, payload, username }) => {
             }
         case LOGINS:
             {
-                console.log(payload)
                 if (payload) {
                     localStorage.setItem("token", payload);
                     localStorage.setItem("username", username);
@@ -45,9 +44,9 @@ export const reducer = (state = intialState, { type, payload, username }) => {
             }
         case LOGOUT:
             {
-                localStorage.setItem("token", "");
+                localStorage.removeItem("token");
                 
-                return { ...state, token: "", isAuth: false }
+                return { ...state, isAuth: false }
             }
         default:
             {
