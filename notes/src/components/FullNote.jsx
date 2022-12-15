@@ -1,6 +1,6 @@
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import { Box, Flex, Spinner, Text } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from './Navbar';
@@ -17,6 +17,8 @@ const FullNote = () => {
 
     let { isLoading } = useSelector((state) => state.notesReducer);
     let note = useSelector((state) => state.notesReducer.oneNote);
+    const [pause, setpause] = useState(true);
+    
     useEffect(() => {
         dispatch(getOne(id))
     }, [id,dispatch])
@@ -31,7 +33,15 @@ const FullNote = () => {
         speech.pitch = 1;
         speechSynthesis.speak(speech);
     }
-
+   
+      const handlePause=()=>
+      {
+        window.speechSynthesis.pause();
+      }
+      const handleResume=()=>
+      {
+        window.speechSynthesis.resume();
+      }
     const handleStop = () => {
         window.speechSynthesis.cancel()
     }
@@ -60,6 +70,8 @@ const FullNote = () => {
                 <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}  >
                     <Flex height="2.5rem" width="100px" margin="auto" bgColor="blue.200" borderRadius=" 8px 8px 0 0 " alignItems="center" justifyContent="space-around" border="2px solid black" borderBottom="none" >
                         <i class="fa-solid fa-circle-play" style={{ fontSize: "20px" }} onClick={handlePlay}></i>
+                        <i class="fa-solid fa-circle-pause" style={{ fontSize: "20px" }} onClick={handlePause}></i>
+                        <i class="fa-solid fa-play" style={{ fontSize: "20px" }} onClick={handleResume}></i>
                         <i class="fa-solid fa-circle-stop" style={{ fontSize: "20px" }} onClick={handleStop}></i>
                     </Flex>
                     <Box
