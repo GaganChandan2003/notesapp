@@ -25,6 +25,8 @@ const FullNote = () => {
 
 
     const handlePlay = () => {
+        window.speechSynthesis.cancel();
+        setpause(true);
         let speech = new SpeechSynthesisUtterance();
         speech.text = note.note;
         speech.lang = 'en-US';
@@ -36,10 +38,13 @@ const FullNote = () => {
    
       const handlePause=()=>
       {
+        setpause(false);
         window.speechSynthesis.pause();
+        
       }
       const handleResume=()=>
       {
+        setpause(true);
         window.speechSynthesis.resume();
       }
     const handleStop = () => {
@@ -70,8 +75,7 @@ const FullNote = () => {
                 <Box w="100%" padding="5vh 5vh 20vh 5vh" height="auto" minH="89.6vh" h="auto" className={css.box}  >
                     <Flex height="2.5rem" width="100px" margin="auto" bgColor="blue.200" borderRadius=" 8px 8px 0 0 " alignItems="center" justifyContent="space-around" border="2px solid black" borderBottom="none" >
                         <i class="fa-solid fa-circle-play" style={{ fontSize: "20px" }} onClick={handlePlay}></i>
-                        <i class="fa-solid fa-circle-pause" style={{ fontSize: "20px" }} onClick={handlePause}></i>
-                        <i class="fa-solid fa-play" style={{ fontSize: "20px" }} onClick={handleResume}></i>
+                        <i class={pause?"fa-solid fa-circle-pause":"fa-solid fa-play"} style={{ fontSize: "20px" }} onClick={pause?handlePause:handleResume}></i>
                         <i class="fa-solid fa-circle-stop" style={{ fontSize: "20px" }} onClick={handleStop}></i>
                     </Flex>
                     <Box

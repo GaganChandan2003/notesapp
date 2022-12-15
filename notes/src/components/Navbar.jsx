@@ -22,6 +22,7 @@ import { logoutApi } from '../Store/Auth/action';
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {username}=useSelector((state)=>state.reducer);
+  let profile=username[0].toUpperCase();
   const dispatch=useDispatch();
   const handleLogout=()=>
   {
@@ -60,7 +61,7 @@ export default function Navbar() {
                 cursor={'pointer'}
                display="flex" alignItems="center" text justifyContent="center"  fontSize="20px"
                 minW={0}>
-               <Text fontWeight="700" >S</Text>
+               <Text fontWeight="700" color="white" >{profile}</Text>
               </MenuButton>
               <MenuList color="black">
               <MenuItem >{username}</MenuItem>
